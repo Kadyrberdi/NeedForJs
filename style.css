@@ -144,6 +144,9 @@ table {
   left: 125px;
   bottom: 10px;
 }
+.enemy {
+  background: transparent url("./image/enemy2.png") center / cover no-repeat;
+}
 .line {
   position: absolute;
   width: 10px;
