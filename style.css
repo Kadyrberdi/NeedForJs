@@ -141,8 +141,6 @@ table {
   height: 100px;
   background: transparent url("./image/player.png") center / cover no-repeat;
   position: absolute;
-  left: 125px;
-  bottom: 10px;
 }
 .enemy {
   background: transparent;
@@ -155,4 +153,36 @@ table {
   height: 50px;
   background: #ffffff;
   left: 145px;
+}
+.start {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  margin: 0;
+  padding: 2rem 0;
+  text-align: center;
+  z-index: 200;
+  color: #ffffff;
+  font-size: 1.5rem;
+  background: #000;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-weight: 700;
+}
+.score {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  margin: 0;
+  padding: 2rem 0;
+  text-align: center;
+  z-index: 200;
+  color: skyblue;
+  font-size: 1rem;
+  background: #000;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-weight: 500;
 }
