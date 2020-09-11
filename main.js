@@ -1,7 +1,14 @@
+const MAX_ENEMY = 7;
+
 const score = document.querySelector(".score"),
   start = document.querySelector(".start"),
   gameArea = document.querySelector(".gameArea"),
   car = document.createElement("div");
+
+const audio = document.createElement("embed");
+
+audio.src = "audio.mp3";
+audio.type = "audio/mp3";
 
 car.classList.add("car");
 
@@ -33,23 +40,26 @@ function startGame() {
   for (let i = 0; i < getQuantityElements(100); i++) {
     const line = document.createElement("div");
     line.classList.add("line");
-    line.style.top = i * 100 + "px";
+    line.style.top = `${i * 100}px`;
     line.y = i * 100;
-    gameArea.appendChild(line);
+    gameArea.append(line);
   }
 
   for (let i = 0; i < getQuantityElements(100 * setting.traffic); i++) {
     const enemy = document.createElement("div");
+    const randomEnemy = Math.floor(Math.random() * MAX_ENEMY) + 1;
     enemy.classList.add("enemy");
     enemy.y = -100 * setting.traffic * (i + 1);
     enemy.style.left =
       Math.floor(Math.random() * (gameArea.offsetWidth - 50)) + "px";
     enemy.style.top = enemy.y + "px";
-    gameArea.appendChild(enemy);
+    enemy.style.background = `transparent url(./image/enemy${randomEnemy}.png) center / cover no-repeat `;
+    gameArea.append(enemy);
   }
 
   setting.start = true;
-  gameArea.appendChild(car);
+  gameArea.append(car);
+  gameArea.append(audio);
   setting.x = car.offsetLeft;
   setting.y = car.offsetTop;
   requestAnimationFrame(playGame);
