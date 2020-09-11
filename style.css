@@ -125,7 +125,36 @@ table {
 .hide {
   display: none;
 }
-
+#topScore {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  top: 80px;
+  right: 0;
+  padding: 25px 50px;
+  font-style: 30px;
+  background-color: #000000;
+  color: antiquewhite;
+}
+#clearScore {
+  display: none;
+  position: fixed;
+  top: 140px;
+  right: 0;
+  font-style: 24px;
+  padding: 10px 35px;
+  background-color: #000000;
+  color: antiquewhite;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+.game {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
 .gameArea {
   width: 300px;
   height: 100vh;
@@ -150,7 +179,6 @@ table {
 .line {
   position: absolute;
   width: 10px;
-  height: 50px;
   background: #ffffff;
   left: 145px;
 }
@@ -166,7 +194,6 @@ table {
   color: #ffffff;
   font-size: 1.5rem;
   background: #000;
-  cursor: pointer;
   font-family: sans-serif;
   font-weight: 700;
 }
@@ -185,4 +212,8 @@ table {
   cursor: pointer;
   font-family: sans-serif;
   font-weight: 500;
+}
+.btn {
+  padding: 10px 30px;
+  cursor: pointer;
 }
