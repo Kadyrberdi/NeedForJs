@@ -1,4 +1,5 @@
 const MAX_ENEMY = 9;
+const MAX_ROAD = 6;
 const HEIGHT_ELEM = 100;
 
 const score = document.querySelector(".score"),
@@ -8,11 +9,15 @@ const score = document.querySelector(".score"),
   topScore = document.getElementById("topScore");
 
 const audio = document.createElement("embed");
-const crash = new Audio("");
+const crash = new Audio("./crash.mp3");
 
 audio.src = "audio.mp3";
 audio.type = "audio/mp3";
 audio.style.cssText = `position: absolute; top: -1000px;`;
+
+crash.src = "crash.mp3";
+crash.type = "audio/mp3";
+crash.style.cssText = `position: absolute; top: 300px;`;
 
 car.classList.add("car");
 
@@ -42,17 +47,22 @@ const setting = {
 
 let level = setting.level;
 
-const result = parseInt(localStorage.getItem("nfjs_score", setting.score));
-topScore.textContent = result ? result : 0;
+const getLocalStorage = () =>
+  parseInt(localStorage.getItem("nfjs_score", setting.score));
+topScore.innerHTML =
+  "Best Score:<br><br>" + getLocalStorage()
+    ? "Best Score:<br><br>" + getLocalStorage()
+    : 0;
 
 /*const removeLocalStorage = () => {
   localStorage.clear();
 };*/
 
 const addLocalStorage = () => {
-  if (result < setting.score) {
+  const result = getLocalStorage();
+  if (!result || result < setting.score) {
     localStorage.setItem("nfjs_score", setting.score);
-    topScore.textContent = setting.score;
+    topScore.innerHTML = "Best Score:<br><br>" + setting.score;
   }
 };
 
@@ -94,8 +104,12 @@ function startGame(event) {
 
   for (let i = 0; i < getQuantityElements(HEIGHT_ELEM * setting.traffic); i++) {
     const enemy = document.createElement("div");
+    //const road = document.createElement("div");
     const randomEnemy = Math.floor(Math.random() * MAX_ENEMY) + 1;
     enemy.classList.add("enemy");
+    //const randomRoad = Math.floor(Math.random() * MAX_ROAD) + 1;
+    enemy.classList.add("enemy");
+    //road.classList.add("road");
     const periodEnemy = -HEIGHT_ELEM * setting.traffic * (i + 1);
     enemy.y =
       periodEnemy < 100 ? -100 * setting.traffic * (i + 1) : periodEnemy;
@@ -104,6 +118,7 @@ function startGame(event) {
       "px";
     enemy.style.top = enemy.y + "px";
     enemy.style.background = `transparent url(./image/enemy${randomEnemy}.png) center / cover no-repeat `;
+    //doument.body.style.background = `transparent url("./image/bgimage${randomRoad}.jpg") center / cover no - repeat`;
     gameArea.append(enemy);
   }
 
@@ -129,7 +144,7 @@ function playGame() {
 
   if (setting.start) {
     setting.score += setting.speed;
-    score.innerHTML = "SCORE<br>" + setting.score;
+    score.innerHTML = "Score:<br><br>" + setting.score;
     moveRoad();
     moveEnemy();
     if (keys.ArrowLeft && setting.x > 0) {
@@ -194,6 +209,7 @@ function moveEnemy() {
       crash.play();
       start.classList.remove("hide");
       start.style.top = score.offsetHeight;
+
       addLocalStorage();
     }
 

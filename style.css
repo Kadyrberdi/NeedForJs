@@ -102,6 +102,8 @@ section {
 }
 body {
   line-height: 1;
+  background: transparent url("./image/bgimage3.jpg") center / cover no-repeat;
+  font-family: "Press Start 2P", cursive;
 }
 ol,
 ul {
@@ -127,14 +129,18 @@ table {
 }
 #topScore {
   position: fixed;
-  width: 50px;
-  height: 50px;
-  top: 80px;
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem 0;
+  z-index: 200;
+  top: 0;
   right: 0;
-  padding: 25px 50px;
-  font-style: 30px;
-  background-color: #000000;
-  color: antiquewhite;
+  color: skyblue;
+  font-size: 1rem;
+  background: #222222;
+  font-weight: 500;
+  border-radius: 10px;
 }
 #clearScore {
   display: none;
@@ -185,7 +191,7 @@ table {
 .start {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 400px;
   width: 100%;
   margin: 0;
   padding: 2rem 0;
@@ -193,27 +199,25 @@ table {
   z-index: 200;
   color: #ffffff;
   font-size: 1.5rem;
-  background: #000;
+  background: transparent;
   font-family: sans-serif;
   font-weight: 700;
 }
 .score {
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  margin: 0;
+  width: 300px;
+  margin: 0 auto;
   padding: 2rem 0;
   text-align: center;
   z-index: 200;
   color: skyblue;
   font-size: 1rem;
-  background: #000;
-  cursor: pointer;
-  font-family: sans-serif;
+  background: #222222;
   font-weight: 500;
+  border-radius: 10px;
 }
 .btn {
+  font-family: transparent;
   padding: 10px 30px;
   cursor: pointer;
 }
